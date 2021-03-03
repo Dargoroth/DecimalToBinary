@@ -1,0 +1,82 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DecimalToBinary
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Please Choose an option\n");
+            Console.WriteLine("1) Decimal to Binary");
+            Console.WriteLine("2) Binary to Decimal");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    BinaryMake();
+                    return;
+                case "2":
+                    DecimalMake();
+                    return;
+
+            }
+
+
+        }
+
+        private static void DecimalMake()
+        {
+            Console.Clear();
+            Console.WriteLine("Please Insert a number");
+            string number = Console.ReadLine();
+
+
+            int a = 0;
+           // Console.WriteLine(number);
+            double newdecimal = 0;
+
+
+            for (int i = number.Length - 1; i >= 0; i--)
+            {
+
+                if (number[i] == '1')
+                {
+                    newdecimal = newdecimal + Math.Pow(2, a);
+                }
+                a++;
+            }
+            Console.WriteLine(newdecimal);
+
+            return;
+        }
+
+        private static void BinaryMake()
+        {
+            Console.Clear();
+            Console.WriteLine("Please insert a number");
+            int number = int.Parse(Console.ReadLine());
+
+            int[] binary = new int[15];
+            string outcome = "";
+            for (int i = 0; number > 0; i++)
+            {
+                binary[i] = number % 2;
+                number = number / 2;
+            }
+            Console.WriteLine("Your converted number is: ");
+            for (int i = binary.Length - 1; i >= 0; i--)
+            {
+                outcome = outcome + binary[i];
+            }
+            int done = int.Parse(outcome);
+            Console.WriteLine(done);
+            return;
+        }
+    }
+}
